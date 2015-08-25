@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+<!-- NMML reference: https://gist.github.com/1763850 -->
+	
+<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
+	<meta title="Snake" package="com.tondy.snake" version="1.0.0" company="tondy" />
+
+<!-- output -->
+	<app main="App" file="Snake" path="bin" />
+<!-- iphone3g (320x480) landscape/portrait -->	
+	<window fps="32" orientation="landscape" />
+	<window width="1024" height="540" resizable="true" fullscreen="true" />
+	<window width="0" height="0" if="mobile" />
+<!--  	<window hardware="true" if="windows" />  -->
+
+<!-- classpath, haxe libs -->
+	<source path="src" />
+	<source path="/home/tondy/dev/abv" />
+	<source path="/home/tondy/dev/abv-ex" />
+<!--	<haxelib name="away3d" /> -->
+    <haxelib name="openfl" />
+<!--	<haxelib name="abvdev" /> 	 -->
+	<!-- assets -->
+	<icon path="res/icon.svg" />
+	<assets path="res" include="*" />
+
+<!-- optimize output
+	<haxeflag name="-dce full" /> -->
+	
+<!--  <haxedef name="gui" /> -->
+ <haxedef name="openfl" /> 
+ <haxedef name="gui" /> 
+<!--  	<haxedef name="debug" /> -->
+</project>

@@ -1,0 +1,9 @@
+-main App
+-cp ../abv
+-cp src
+-D gui
+#-D debug
+-neko bin/neko/app.n
+-cmd cp ../abv-tools/libs/Linux/x64/libABVSH.so bin/neko/abv.ndll
+-cmd cd bin/neko
+-cmd neko app.n

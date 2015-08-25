@@ -1,0 +1,38 @@
+.snake{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border-width: 1px ;
+	border-color: #f00;
+	border-style: solid;
+	border-radius:0;
+	background-color: #cdf;
+}
+#snake_0{
+	top: 200px;
+	left: 260px;
+}
+#snake_1{
+	top: 200px;
+	left: 240px;
+}
+#snake_2{
+	top: 200px;
+	left: 220px;
+}
+
+.food{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+/*	background-color: #f80; */
+	background-image: url('img/food.png') ; 
+	background-repeat:no-repeat;
+	background-position:left top;
+}
+
+#food_0{
+	top: 200px;
+	left: 400px;
+}
+

@@ -1,0 +1,145 @@
+#!/bin/hxtool
+/**
+ * https://github.com/tondy67/hxtool
+ * http://lib.haxe.org/p/hscript
+ **/
+
+var cfgFile = "config.json";
+
+var app = "app";
+var main = "App";
+var libs = [];
+var src = ["src","../abv"];
+var opt = ["gui"];
+
+var dirFlash = "bin/flash/";
+var dirJs = "bin/js/";
+var dirCpp = "bin/cpp/";
+var dirNeko = "bin/neko/";
+var dirAndroid = "bin/android/";
+
+var browser = switch(uname()){
+	case "Linux": "xdg-open";
+	case "Windows": "start";
+	case "OSX": "open";
+	default: "";
+}
+if(browser == "")exit("no browser");
+
+var cfg = null;
+try cfg = json(cat(cfgFile))catch(m:Dynamic){print(m+"");};
+if(cfg == null)exit("no config");
+var v = "";
+if(cfg.name == null) v += "name, ";
+if(cfg.width == null) v += "width, ";
+if(cfg.height == null) v += "height, ";
+if(cfg.ups == null) v += "ups";
+if(v !="")exit("no cfg values: "+v);
+
+
+var res = [];
+if(cfg.appResources != null) for(l in cfg.appResources)res.push(l);
+
+function info()
+{
+	print("Name: " + cfg.name);
+	print("Size: " + cfg.width+"x"+cfg.height);
+	if(cfg.version != null)print("Version: " + cfg.version);
+	if(cfg.author != null)print("Author: " + cfg.author);
+}
+//clear();
+var debug = false;
+if(args[3] == "debug") debug = true;
+
+var target = switch(args[2]){
+	case "flash": 	"flash";
+	case "js":		"js";
+	case "neko": 	"neko";
+	case "cpp": 	"cpp";
+	default: "";
+}
+//
+function help()
+{
+	print("Usage:\n ./make.hxs build|run|test|info|help|rebuild [flash|js|neko|cpp] [debug]");
+}
+
+function getOptions()
+{
+	var r = "-main " + main;
+
+	for(a in libs)r += " -lib " + a;
+	for(a in src)r += " -cp " + a;
+	for(a in opt)r += " -D " + a;
+
+	if(debug)r += " -D debug";
+	else if(target != "flash")r += " -D no-traces";
+
+	return r;
+}
+
+function build()
+{ 
+	var out = "";
+	switch(target){
+		case "flash": 
+			out = " -swf "+ dirFlash+app+".swf -swf-version 11.2 -swf-header "+cfg.width+":"+cfg.height+":32:FFFFFF  ";
+		case "js":
+			out = " -js "+ dirJs + app + ".js";
+		case "neko":
+			out = " -neko "+ dirNeko + app + ".n";
+		case "cpp":
+			out = " -cpp "+ dirCpp;
+		default: print("no target"); help(); return;
+	}
+
+	echo("Build "+target+" ("+cfg.name+") on "+uname());
+	var s = getOptions() + out; //print(s);
+	var arg = s.split(" "); 
+	command("haxe",arg);
+}
+
+function rebuild()
+{
+	build();
+}
+
+function run()
+{
+	var s = "Run: ";
+	switch(target){
+		case "flash": 
+			print(s+target);
+			command(browser,[ "bin/flash/index.html"]);
+		case "js":
+			print(s+target);
+			command(browser,[ "bin/js/index.html"]);
+		case "neko":
+			print(s+target);
+			cd( "bin/neko");
+			command("nekotools",["boot",app+".n"]);
+			command("./" + app);
+		case "cpp":
+			print(s+target);
+			cd( "bin/cpp");
+			command("./" + main);
+		default: help(); return;
+	}
+}
+function test()
+{
+	build();
+	run();
+}
+// command
+switch(args[1]){
+	case "help": 	help();
+	case "info": 	info();
+	case "rebuild": rebuild();
+	case "build": 	build();
+	case "run": 	run();
+	case "test": 	test();
+	default: help();
+}
+
+

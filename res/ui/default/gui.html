@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="gui.css" />
+<title>GUI</title>
+</head>
+<body>
+	
+	<div id="main" class="hbox">
+		<button id="btnmenu" action="['STATE,menu,STATE']">Menu</button>
+		<button id="btnplay" action="['STATE,menu,STATE']">Play</button>
+	</div>
+
+	<div id="menu" class="vbox" visible="false">
+		<button id="btn0" action="['CLICK,App,NEW','STATE,menu,STATE']">New Game</button>
+		<button id="btn1" 
+			states = "[
+			{'text':'Speed 1'},
+			{'text':'Speed 2'},
+			{'text':'Speed 3'},
+			{'text':'Speed 4'},
+			{'text':'Speed 5'},
+			{'text':'Speed 6'}
+			]"
+			action="['STATE,Game,MSG,cmSpeed']"	>Speed</button>
+		<button id="btn2" 
+			states="[
+			{'text':'Food 1'},
+			{'text':'Food 2'}
+			]" 
+			action="['STATE,App,MSG,cmFood']" >Food</button>
+		<button id="btn3" 
+			states="[
+			{'text':'Sound OFF'},
+			{'text':'Sound ON'}
+			]" 
+			action="['STATE,App,MSG,cmSound']" >Sound</button>
+		<button id="btn4" 
+			states = "[
+			{'text':'English'},
+			{'text':'Castellano'},
+			{'text':'Български'}]"
+			action="['STATE,Gui,MSG,cmLang']" >English</button>
+		<button id="btn5" action="['CLICK,mbox,OPEN']">How to play</button>
+		<button id="btn6" action="['CLICK,App,EXIT']">Exit</button>
+	</div>
+	
+	<div id="mbox" class="dialog" visible="false">
+		<div id="mboxTxt" class="text">Haxe Snake.
+Use the arrow keys on your keyboard to play the game.
+		</div>
+		<button id="mboxOk" class="ctr" action="['CLICK,mbox,CLOSE']">Ok</button>
+	</div>
+	
+</body>
+</html>

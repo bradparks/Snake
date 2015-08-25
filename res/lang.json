@@ -1,0 +1,36 @@
+{
+"#0" : "Valid json!",
+"#1" : "Obligatory: langs",
+"#2" : "langs -> [Lang1,Lang2...]",
+		"langs" : ["en","es","bg"],
+"#3" : "objID -> [Lang1Word,Lang2Word...]",
+		"btnmenu" : ["Menu","Menu","Меню"],
+		"btn0" : ["New Game","Jugar","Нова Игра"],
+"#4" : "objID -> [Lang1State1,Lang1State2...,Lang2State1,Lang2State2...]",
+		"btn1" : [
+			"Speed 1","Speed 2","Speed 3","Speed 4","Speed 5","Speed 6",
+			"Velocidad 1","Velocidad 2","Velocidad 3","Velocidad 4","Velocidad 5","Velocidad 6",
+			"Скорост 1","Скорост 2","Скорост 3","Скорост 4","Скорост 5","Скорост 6"
+		],
+		"btn2" : [
+			"Food 1","Food 2",
+			"Pasta 1","Pasta 2",
+			"Торта 1","Торта 2"
+		],
+		"btn3" : [
+			"Sound OFF","Sound ON",
+			"Sonido OFF","Sonido ON",
+			"Звук Изкл.","Звук Вкл."
+		],
+		"btn4" : ["English","Castellano","Български"],
+		"btn5" : ["How to play","Como jugar","Как се играе"],
+		"btn6" : ["Exit","Salida","Изход"],
+		"mboxTxt" : [
+			"Haxe Snake.\nUse the arrow keys on your keyboard to play the game.",
+			"Haxe Snake.\nUsa las flechas del teclado para jugar el juego.",
+			"Haxe Snake.\nИзползвайте стрелките на клавиатурата за да играете."
+		],
+"#5" : "Strings by ID",
+		
+		"GameOver" : ["Game Over","Fin del juego","Край на играта"]
+}

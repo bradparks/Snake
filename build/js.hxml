@@ -1,0 +1,7 @@
+-main App
+-lib abv
+-cp src
+-D gui
+#-D debug
+-js bin/js/app.js
+-cmd google-chrome bin/js/index.html

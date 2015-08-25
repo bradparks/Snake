@@ -1,0 +1,8 @@
+-main App
+-cp ../abv
+-cp src
+-D gui
+#-D debug
+-cpp bin/cpp
+-cmd cd bin/cpp
+-cmd ./App
