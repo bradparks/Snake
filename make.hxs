@@ -3,7 +3,6 @@
  * https://github.com/tondy67/hxtool
  * http://lib.haxe.org/p/hscript
  **/
-
 var cfgFile = "config.json";
 
 var app = "app";
@@ -17,11 +16,17 @@ var dirJs = "bin/js/";
 var dirCpp = "bin/cpp/";
 var dirNeko = "bin/neko/";
 var dirAndroid = "bin/android/";
+var ndll = "abv-tools/libs/Linux/x86/libABVSH.so";
+var htmlFile = "index.html";
+///
+var projectDir = dirname(args[0]);
+cd(projectDir);
+projectDir = pwd();
 
 var browser = switch(uname()){
 	case "Linux": "xdg-open";
 	case "Windows": "start";
-	case "OSX": "open";
+	case "Mac": "open";
 	default: "";
 }
 if(browser == "")exit("no browser");
@@ -81,27 +86,78 @@ function getOptions()
 function build()
 { 
 	var out = "";
+	var dir = "";
 	switch(target){
 		case "flash": 
+			dir = dirFlash;
 			out = " -swf "+ dirFlash+app+".swf -swf-version 11.2 -swf-header "+cfg.width+":"+cfg.height+":32:FFFFFF  ";
 		case "js":
+			dir = dirJs;
 			out = " -js "+ dirJs + app + ".js";
 		case "neko":
+			dir = dirNeko;
 			out = " -neko "+ dirNeko + app + ".n";
 		case "cpp":
+			dir = dirCpp;
 			out = " -cpp "+ dirCpp;
 		default: print("no target"); help(); return;
 	}
-
-	echo("Build "+target+" ("+cfg.name+") on "+uname());
+	
+	if(!exists(dir))rebuild();
+	
+	echo("Build "+target+" ("+cfg.name+") on "+uname()+"\n");
 	var s = getOptions() + out; //print(s);
 	var arg = s.split(" "); 
 	command("haxe",arg);
 }
+function getCss(n:String)
+{
+	var r = "";
+	if(exists(n)) r = "<link rel=\"stylesheet\" type=\"text/css\" href=\""+n+"\" />";
+	return r;
+}
+function getHtml()
+{
+	var s = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
+
+	if(target == "js"){
+		s+= getCss(cfg.res+cfg.name+".css");
+		s+= getCss("res/ui/default/gui.css");
+	}
+	
+	s += "\n\t<title>"+cfg.name+"</title>\n</head>\n<body id=\"body\" >\n";
+	
+	if(target == "flash") s += "<object type=\"application/x-shockwave-flash\" data=\"app.swf\" width=\""+cfg.width+"\" height=\""+cfg.height+"\">\n\t<param name=\"movie\" value=\"app.swf\" />\n\t<param name=\"quality\" value=\"high\" />\n</object>";
+	else s += "<script type=\"text/javascript\" src=\""+app+".js\"></script>";
+
+	s += "\n</body>\n</html>";
+	return s;
+}
 
 function rebuild()
 {
-	build();
+	switch(target){
+		case "flash": 
+			prebuild(dirFlash); save(dirFlash+htmlFile,getHtml());
+		case "js":
+			prebuild(dirJs); save(dirJs+htmlFile,getHtml());
+		case "neko":
+			prebuild(dirNeko);
+		case "cpp":
+			prebuild(dirCpp);
+		default: print("no target"); help(); return;
+	}
+}
+
+function prebuild(dir:String)
+{
+	cd(projectDir);
+	rm(dir,"r"); 
+	mkdir(dir);
+	cd(dir);
+	ln("../../res","res");
+	if(target == "neko") ln("../../../"+ndll,"abv.ndll");
+	cd(projectDir);
 }
 
 function run()
@@ -110,10 +166,10 @@ function run()
 	switch(target){
 		case "flash": 
 			print(s+target);
-			command(browser,[ "bin/flash/index.html"]);
+			command(browser,[ dirFlash + htmlFile]);
 		case "js":
 			print(s+target);
-			command(browser,[ "bin/js/index.html"]);
+			command(browser,[ dirJs + htmlFile]);
 		case "neko":
 			print(s+target);
 			cd( "bin/neko");
@@ -135,11 +191,10 @@ function test()
 switch(args[1]){
 	case "help": 	help();
 	case "info": 	info();
-	case "rebuild": rebuild();
+	case "rebuild": rebuild(); build();
 	case "build": 	build();
 	case "run": 	run();
 	case "test": 	test();
 	default: help();
 }
-
 

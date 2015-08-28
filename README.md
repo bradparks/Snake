@@ -12,13 +12,18 @@ Install the latest version of [Haxe](http://www.haxe.org/download).
     $ git clone https://github.com/tondy67/abv.git
     $ git clone https://github.com/tondy67/Snake.git
 
-	if you want cpp/neko builds...
+if you want cpp/neko builds...
+
 	$ git clone https://github.com/tondy67/abv-tools.git
 
-	if you want openfl builds...
+if you want openfl builds...
+
     $ git clone https://github.com/tondy67/abv-ex.git
 
-	if you have [hxtool](https://github.com/tondy67/hxtool) installed just run
+	$ cd Snake
+
+if you have [hxtool](https://github.com/tondy67/hxtool) installed just run
+
 	$ ./make.hxs
 
 	...or with the haxe way...
