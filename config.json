@@ -5,7 +5,7 @@
 		"version" : "0.0.1",
 		"author" : "tondy",
 "#2" : "Updates per second ~ fps",
-		"ups" : 32,
+		"ups" : 60,
 "#3" : "App width,height",
 		"width" : 1024,
 "#4" : "5 = Int, 5.0 = Int, 5.1 = Float",

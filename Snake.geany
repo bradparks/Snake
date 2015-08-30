@@ -1,3 +1,4 @@
+
 [file_prefs]
 final_new_line=true
 ensure_convert_new_lines=true
@@ -23,13 +24,20 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=4
-FILE_NAME_0=347;Haxe;0;EUTF-8;1;1;0;%2Fhome%2Ftondy%2Fdev%2FSnake%2Fsrc%2FApp.hx;0;4
-FILE_NAME_1=0;Haxe;0;EUTF-8;1;1;0;%2Fhome%2Ftondy%2Fdev%2FSnake%2Fsrc%2FGame.hx;0;4
-FILE_NAME_2=3511;Haxe;0;EUTF-8;1;1;0;%2Fhome%2Ftondy%2Fdev%2FSnake%2Fmake.hxs;0;4
-FILE_NAME_3=1664;Haxe;0;EUTF-8;1;1;0;%2Fhome%2Ftondy%2Fdev%2Fabv%2Fabv%2Fsys%2Fgui%2FAM.hx;0;4
-FILE_NAME_4=3341;Haxe;0;EUTF-8;1;1;0;%2Fhome%2Ftondy%2Fdev%2Fabv%2Fabv%2Flib%2FCC.hx;0;4
-FILE_NAME_5=4544;Haxe;0;EUTF-8;1;1;0;%2Fhome%2Ftondy%2Fdev%2Fabv%2Fabv%2Fsys%2Fcpp%2FST.hx;0;4
+current_page=12
+FILE_NAME_0=3388;CMake;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5CCMakeLists.txt;0;4
+FILE_NAME_1=446;C++;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Csrc%5Cabv.cpp;0;4
+FILE_NAME_2=230;C;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Csrc%5Cabv-common.h;0;4
+FILE_NAME_3=41853;CMake;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Cexternal%5CSDL2%5CCMakeLists.txt;0;4
+FILE_NAME_4=378;CMake;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Cexternal%5CSDL2_image%5CCMakeLists.txt;0;4
+FILE_NAME_5=291;CMake;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Cexternal%5CSDL2_mixer%5CCMakeLists.txt;0;4
+FILE_NAME_6=1002;CMake;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Cexternal%5CSDL2_ttf%5CCMakeLists.txt;0;4
+FILE_NAME_7=539;Haxe;0;EUTF-8;1;1;0;C%3A%5Cdev%5CSnake%5Cmake.hxs;0;4
+FILE_NAME_8=89;None;0;EUTF-8;1;1;0;C%3A%5CUsers%5Ctondy%5CDownloads%5Cdll.txt;0;4
+FILE_NAME_9=0;C++;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Csrc%5Chx.cpp;0;4
+FILE_NAME_10=730;C;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv-tools%5Cgui%5Csrc%5Chx.h;0;4
+FILE_NAME_11=0;Haxe;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv%5Cabv%5Csys%5Ccpp%5CST.hx;0;4
+FILE_NAME_12=2968;Haxe;0;EUTF-8;1;1;0;C%3A%5Cdev%5Cabv%5Cabv%5Cio%5CSH.hx;0;4
 
 [VTE]
 last_dir=/home/tondy/dev/hxtool

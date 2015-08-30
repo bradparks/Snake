@@ -16,7 +16,13 @@ var dirJs = "bin/js/";
 var dirCpp = "bin/cpp/";
 var dirNeko = "bin/neko/";
 var dirAndroid = "bin/android/";
-var ndll = "abv-tools/libs/Linux/x86/libABVSH.so";
+var ndll = "abv-tools/libs/"+uname()+"/";
+switch(uname()){
+	case "Linux": ndll += archX()+"/libABV.so"; 
+	case "Windows": ndll += "ABV.dll"; 
+	case "Mac": "";
+}
+//print(ndll);
 var htmlFile = "index.html";
 ///
 var projectDir = dirname(args[0]);
